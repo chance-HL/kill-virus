@@ -5,8 +5,41 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>消灭病毒</title>
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
-    
+    <div id="stage">
+        <!-- 游戏元素层，放置动态元素 -->
+        <div id="game"></div>
+
+        <!-- UI层，开始界面，失败界面，分数统计界面 -->
+        <div id="ui">
+            <!-- 显示分数 -->
+            <div class="score-ui">
+                <img src="./imgs/vir.png" alt="">
+                <span id="score-label">0</span>
+            </div>
+
+            <!-- 开始界面 -->
+            <div id="start-alert">
+                <!-- 上面部分 -->
+                <div class="game-desc">
+                    <img class="logo" src="./imgs/logo.png" alt="">
+                    <p>屏幕上方有带字母的"病毒"落下，按下键盘对应的按键，消灭病毒，否则，你将被"病毒"消灭☣</p>
+                </div>
+                <!-- 下面部分 -->
+                <footer class="game-down">
+                    <div id="start-btn">点击屏幕开始游戏</div>
+                    <p>chance</p>
+                </footer>
+            </div>
+
+            <!-- 游戏失败界面 -->
+            <div id="game-over-alert">
+
+            </div>
+        </div>
+    </div>
+    <script src="./js/index.js"></script>
 </body>
 </html>
