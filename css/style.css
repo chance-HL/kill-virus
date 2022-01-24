@@ -116,7 +116,8 @@ body{
 
  /* 游戏结束画面 */
 /* 任务失败页面 */
-#game-over-alert {
+#game-over-alert,
+#game-pass {
     width: 240px;
     height: 80px;
     border: solid 1px rgb(85, 255, 227);
@@ -134,17 +135,31 @@ body{
     background-color:rgba(0,0,0,0.3);
 }
 
-#game-over-alert h1 {
+#game-over-alert h1,
+#game-pass h1 {
     width: 150px;
     margin: 0 auto;
-    margin-top: -40px;
+    margin-top: -43px;
+
     /* color:  rgb(85, 255, 227); */
     text-shadow: 0 0 15px  rgb(85, 255, 227);
 }
 
-#game-over-alert #restart-btn {
+#game-over-alert #restart-btn,
+#game-pass #pass-btn {
     font-size: 24px;
     margin-top: 20px;
+}
+
+/* 任务通关页面 */
+#game-pass {
+    border: solid 1px rgb(245, 196, 0);
+    color: rgb(245, 196, 0);
+    display: none;
+}
+
+#game-pass h1 {
+    text-shadow: 0 0 15px  rgb(245, 196, 0);
 }
 
  /* 定义滑动动画 */

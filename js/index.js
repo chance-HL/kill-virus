@@ -47,7 +47,8 @@ let stage =document.querySelector('#stage')
 // 获得ui层
 let uiLayer =document.querySelector('#ui')
 
-let virues =[]
+let virues =[];
+let purge;
 function makeVirus(){
     let virus =document.createElement('div')
     virus.setAttribute('class','virus')
@@ -98,13 +99,16 @@ let winH =stage.offsetHeight;
 function update(){
      for(let i=0;i<virues.length;i++){
          let virus =virues[i];
+         
          virus.style.top =virus.offsetTop +config.speed +'px'
+         console.log(config.speed);
          if(virus.offsetTop > (winH-200)&&!uiLayer.warning){
             showWarning()
             uiLayer.warning =true
          }else if(virus.offsetTop>=winH){
             //  超出结束
             gameOver()
+            
          }
      }
 }
@@ -138,14 +142,14 @@ window.addEventListener('keyup',function(e){
 
             // 切换病毒
             let dieImg = document.createElement('img')
-            game.appendChild(dieImg)
             dieImg.src = './imgs/virus-die.png'
             dieImg.style.position = 'absolute'
             dieImg.style.left = virus.offsetLeft + 'px'
             dieImg.style.top = virus.offsetTop + 'px'
             dieImg.classList.add('fade-out')
+            game.appendChild(dieImg)
 
-            setTimeout(function(){
+            purge=setTimeout(function(){
                 game.removeChild(dieImg)
             },1000)
             game.removeChild(virus)
@@ -157,7 +161,17 @@ window.addEventListener('keyup',function(e){
             // 播放消灭音效
             destroy.currentTime =0;
             destroy.play()
+            
         }
+
+       
+    }
+    if(score>=50){
+    gamePass.style.display ='block'
+    clearInterval(purge)
+    clearInterval(timer)
+    clearInterval(updater)
+    config.status =2;
     }
 })
 
@@ -166,7 +180,9 @@ let restartBtn =document.querySelector('#restart-btn')
 
 restartBtn.addEventListener('click',function(){
     gameOverAlert.style.display ='none'
+    config.speed=3;
     resetGame()
+    console.log('重玩'+config.speed);console.log('重玩'+config.interval);
 
 })
 
@@ -176,7 +192,18 @@ function resetGame(){
     scoreLabel.innerHTML =score;
     game.innerHTML='';
     virues=[];
-    uiLayer.removeChild(document.querySelector('.warning'))
-    uiLayer.warning =false;
     startGame();
 }
+// 控制关卡数修改下落速度
+let level =1
+// 点击进入下一关
+let gamePass=document.querySelector('#game-pass')
+let passBtn =document.querySelector('#pass-btn')
+
+passBtn.addEventListener('click',function(){
+    gamePass.style.display ='none'
+    resetGame();
+    config.speed+=(3*(0.25*level));
+    level++
+
+})
