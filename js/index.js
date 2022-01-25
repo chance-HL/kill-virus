@@ -141,15 +141,15 @@ window.addEventListener('keyup',function(e){
         if(virus.letter.toLowerCase() === key.toLocaleLowerCase() && config.status === 1){
 
             // 切换病毒
-            let dieImg = document.createElement('img')
-            dieImg.src = './imgs/virus-die.png'
-            dieImg.style.position = 'absolute'
-            dieImg.style.left = virus.offsetLeft + 'px'
-            dieImg.style.top = virus.offsetTop + 'px'
-            dieImg.classList.add('fade-out')
+            let dieImg =document.createElement('img')
             game.appendChild(dieImg)
+            dieImg.src='./imgs/virus-die.png'
+            dieImg.style.position ='absolute'
+            dieImg.style.left =virus.offsetLeft +'px'
+            dieImg.style.top =virus.offsetTop + 'px'
+            dieImg.classList.add('fade-out')
 
-            purge=setTimeout(function(){
+            setTimeout(function(){
                 game.removeChild(dieImg)
             },1000)
             game.removeChild(virus)
@@ -168,7 +168,7 @@ window.addEventListener('keyup',function(e){
     }
     if(score>=50){
     gamePass.style.display ='block'
-    clearInterval(purge)
+    // clearInterval(purge)
     clearInterval(timer)
     clearInterval(updater)
     config.status =2;
