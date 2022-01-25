@@ -4,7 +4,7 @@ let config ={
     // 病毒生成的时间间隔
     interval:800 ,
     // 病毒动画的速度
-    speed:3
+    speed:5
 }
 // 得分
 let score =0;
@@ -101,7 +101,6 @@ function update(){
          let virus =virues[i];
          
          virus.style.top =virus.offsetTop +config.speed +'px'
-         console.log(config.speed);
          if(virus.offsetTop > (winH-200)&&!uiLayer.warning){
             showWarning()
             uiLayer.warning =true
@@ -168,7 +167,7 @@ window.addEventListener('keyup',function(e){
     }
     if(score>=50){
     gamePass.style.display ='block'
-    // clearInterval(purge)
+
     clearInterval(timer)
     clearInterval(updater)
     config.status =2;
@@ -182,7 +181,7 @@ restartBtn.addEventListener('click',function(){
     gameOverAlert.style.display ='none'
     config.speed=3;
     resetGame()
-    console.log('重玩'+config.speed);console.log('重玩'+config.interval);
+
 
 })
 
